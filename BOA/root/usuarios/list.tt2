@@ -1,0 +1,22 @@
+[% # This is a TT comment. -%]
+
+[%- # Provide a title -%]
+[% META title = 'Lista de Usuarios' -%]
+
+[% # Note That the '-' at the beginning or end of TT code  -%]
+[% # "chomps" the whitespace/newline at that end of the    -%]
+[% # output (use View Source in browser to see the effect) -%]
+
+[% # Some basic HTML with a loop to display books -%]
+<table>
+<tr><th>Username</th><th>Nombre(s)</th><th>Apellido(s)</th></tr>
+[% # Muestra todos los usuarios %]
+[% FOREACH usuario IN usuarios -%]
+  <tr>
+    <td>[% usuario.username %]</td>
+    <td>[% usuario.nombres %]</td>
+    <td>[% usuario.apellidos %]</td>
+    <td></td>
+  </tr>
+[% END -%]
+</table>
