@@ -13,10 +13,9 @@
 [% # Muestra todos los usuarios %]
 [% FOREACH usuario IN usuarios -%]
   <tr>
-    <td>[% usuario.username %]</td>
+    <td>[% usuario.nombreusuario %]</td>
     <td>[% usuario.nombres %]</td>
     <td>[% usuario.apellidos %]</td>
-    <td></td>
   </tr>
 [% END -%]
 </table>

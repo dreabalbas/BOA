@@ -1,0 +1,9 @@
+Cosas que tuve que instalar
+
+sudo cpan Catalyst::Model::DBIC::Schema
+sudo cpan Catalyst::Helper::View::TT
+sudo cpan Catalyst::Action::RenderView
+sudo cpan Catalyst::Plugin::ConfigLoader
+sudo cpan Catalyst::Plugin::Static::Simple
+sudo cpan MooseX::MarkAsMethods
+sudo cpan MooseX::NonMoose

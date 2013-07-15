@@ -60,10 +60,40 @@ sub list :Local {
     # stash where they can be accessed by the TT template
     # $c->stash(books => [$c->model('DB::Book')->all]);
     # But, for now, use this code until we create the model later
-    $c->stash(usuarios => '');
+    $c->stash(usuarios => [$c->model('DB::Usuario')->all]);
 
     # Set the TT template to use.  You will almost always want to do this
     # in your action methods (action methods respond to user input in
     # your controllers).
     $c->stash(template => 'usuarios/list.tt2');
+}
+
+
+=head2 url_create
+    
+Crear un usuario
+
+=cut
+
+sub url_create :Local {
+    # In addition to self & context, get the title, rating, &
+    # author_id args from the URL.  Note that Catalyst automatically
+    # puts extra information after the "/<controller_name>/<action_name/"
+    # into @_.  The args are separated  by the '/' char on the URL.
+    my ($self, $c, $nombreusuario, $nombres, $apellidos) = @_;
+
+    # Call create() on the book model object. Pass the table
+    # columns/field values we want to set as hash values
+    my $usuario = $c->model('DB::Usuario')->create({
+	    nombreusuario  => $nombreusuario,
+	    nombres => $nombres,
+	    apellidos => $apellidos
+	});
+	
+    # Assign the Book object to the stash for display and set template
+    $c->stash(usuario     => $usuario,
+	      template => 'usuarios/usuario_creado.tt2');
+
+    # Disable caching for this page
+    $c->response->header('Cache-Control' => 'no-cache');
 }
