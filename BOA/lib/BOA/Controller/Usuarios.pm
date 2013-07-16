@@ -1,6 +1,7 @@
 package BOA::Controller::Usuarios;
 use Moose;
 use namespace::autoclean;
+use BOA::Form::Usuario;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
@@ -26,7 +27,6 @@ sub index :Path :Args(0) {
 
     $c->response->body('Matched BOA::Controller::Usuarios in Usuarios.');
 }
-
 
 =head1 AUTHOR
 
@@ -68,26 +68,43 @@ sub list :Local {
     $c->stash(template => 'usuarios/list.tt2');
 }
 
+=head2 base
 
-=head2 url_create
-    
-Crear un usuario
+Logica base, comun en varios metodos que luego
+seran encadenados
 
 =cut
 
-sub url_create :Local {
+sub base :Chained('/') :PathPart('usuarios') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+
+    # Store the ResultSet in stash so it's available for other methods
+    $c->stash(resultset => $c->model('DB::Usuario'));
+
+    # Print a message to the debug log
+    $c->log->debug('*** INSIDE BASE METHOD ***');
+}
+
+=head2 url_create
+    
+Crear un usuario via url
+
+=cut
+    
+sub url_create :Chained('base') :PathPart('url_create') :Args(4) {
     # In addition to self & context, get the title, rating, &
     # author_id args from the URL.  Note that Catalyst automatically
     # puts extra information after the "/<controller_name>/<action_name/"
     # into @_.  The args are separated  by the '/' char on the URL.
-    my ($self, $c, $nombreusuario, $nombres, $apellidos) = @_;
+    my ($self, $c, $nombreusuario, $nombres, $apellidos, $email) = @_;
 
     # Call create() on the book model object. Pass the table
     # columns/field values we want to set as hash values
     my $usuario = $c->model('DB::Usuario')->create({
 	    nombreusuario  => $nombreusuario,
 	    nombres => $nombres,
-	    apellidos => $apellidos
+	    apellidos => $apellidos,
+	    email => $email
 	});
 	
     # Assign the Book object to the stash for display and set template
@@ -96,4 +113,40 @@ sub url_create :Local {
 
     # Disable caching for this page
     $c->response->header('Cache-Control' => 'no-cache');
+}
+
+=head2 create
+
+Usa HTML::FormHandler para crear un nuevo usuario
+
+=cut
+
+sub create :Chained('base') Path('create') Args(0) {
+    my ($self, $c ) = @_;
+
+    my $usuario = $c->model('DB::Usuario')->new_result({});
+    return $self->form($c, $usuario);
+}
+
+=head2 form
+
+Procesa el formulario para usuario del FormHandler.
+
+=cut
+
+sub form {
+
+    my ( $self, $c, $usuario ) = @_;
+
+    my $form = BOA::Form::Usuario->new;
+    
+    # Establecer el archivo
+    $c->stash( template => 'usuarios/form.tt2', form => $form );
+    $form->process( item => $usuario, params => $c->req->params );
+    
+    return unless $form->validated;
+    
+    # Mensaje de status del proceso y vuelve a la lista de usuarios
+    $c->stash(usuario     => $usuario,
+	      template => 'usuarios/usuario_creado.tt2');
 }

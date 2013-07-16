@@ -15,14 +15,8 @@
 <p>Se creó el usuario '[% usuario.nombreusuario %]'
 
 [% # Then, output the last name of the first author -%]
-perteneciente a '[% usuario.nombres %]' '[% usuario.apellidos %]'.</p>
+perteneciente a [% usuario.nombres %] [% usuario.apellidos %].</p>
 
 [% # Provide a link back to the list page.  'c.uri_for' builds -%]
 [% # a full URI; e.g., 'http://localhost:3000/books/list'      -%]
 <p><a href="[% c.uri_for('/usuarios/list') %]">Volver a usuarios</a></p>
-
-[% # Try out the TT Dumper (for development only!) -%]
-<pre>
-Dump of the 'book' variable:
-[% Dumper.dump(usuario) %]
-</pre>

@@ -7,3 +7,6 @@ sudo cpan Catalyst::Plugin::ConfigLoader
 sudo cpan Catalyst::Plugin::Static::Simple
 sudo cpan MooseX::MarkAsMethods
 sudo cpan MooseX::NonMoose
+
+Para los formularios:
+sudo cpan HTML::FormHandler::Model::DBIC

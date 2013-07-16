@@ -1,0 +1,6 @@
+[% META title = 'Crear/Modificar Usuario' %]
+    
+[%# Renderizar el formulario HTML::FormHandler%]
+[% form.render %]
+
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Volver</a></p>
