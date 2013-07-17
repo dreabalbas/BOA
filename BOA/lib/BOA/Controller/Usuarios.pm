@@ -43,6 +43,58 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
+=head2 index
+
+Login 
+
+=cut
+
+sub login :Path :Args(0) {
+    my ($self, $c) = @_;
+
+    # Obtener el username y password
+    my $nombreusuario = $c->request->params->{nombreusuario};
+    my $contrasena = $c->request->params->{contrasena};
+
+    # Si los campos de username y password no estan vacios
+    if ($nombreusuario && $contrasena) {
+	# Intentar loguear al usuario
+	if ($c->authenticate({ username => $nombreusuario,
+				password => $contrasena  } )) {
+	    # Si es posible, dirigirlos a la pagina principal
+	    $c->response->redirect($c->uri_for(
+		$c->controller('Usuarios')->action_for('list')));
+	    return;
+	} else {
+	    # Mostrar error
+	    $c->stash(error_msg => "Nombre de usuario o contraseña incorrecto.");
+	}
+    } else {
+	# Mostrar error
+	$c->stash(error_msg => "Nombre de usuario o contraseña vacío.")
+	    unless ($c->user_exists);
+    }
+
+    # Si todo lo anterior sale mal, volvemos a la pagina de login
+    $c->stash(template => 'login.tt2');
+}
+
+=head2 index
+
+Logout
+
+=cut
+
+sub logout :Path :Args(0) {
+    my ($self, $c) = @_;
+
+    # Clear the user's state
+    $c->logout;
+
+    # Send the user to the starting point
+    $c->response->redirect($c->uri_for('/'));
+}
+
 =head2 list
 
 Recupera los usuarios y los pasa en usuarios/list.tt2 para ser mostrados
@@ -67,6 +119,7 @@ sub list :Local {
     # your controllers).
     $c->stash(template => 'usuarios/list.tt2');
 }
+
 
 =head2 base
 

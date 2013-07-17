@@ -20,6 +20,14 @@ use Catalyst qw/
     -Debug
     ConfigLoader
     Static::Simple
+    
+    StackTrace
+
+    Authentication
+
+    Session
+    Session::Store::File
+    Session::State::Cookie
 /;
 
 extends 'Catalyst';
@@ -42,6 +50,16 @@ __PACKAGE__->config(
     enable_catalyst_header => 1, # Send X-Catalyst header
 );
 
+# Configure SimpleDB Authentication
+__PACKAGE__->config(
+    'Plugin::Authentication' => {
+	default => {
+	    class           => 'SimpleDB',
+	    user_model      => 'DB::Usuario',
+	    password_type   => 'clear',
+	},
+    },
+);
 # Start the application
 __PACKAGE__->setup();
 

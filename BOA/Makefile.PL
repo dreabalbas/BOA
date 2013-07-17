@@ -16,6 +16,10 @@ requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires HTML::FormHandler::Model::DBIC
 requires 'namespace::autoclean';
+requires 'Catalyst::Plugin::Authentication';
+requires 'Catalyst::Plugin::Session';
+requires 'Catalyst::Plugin::Session::Store::File';
+requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Config::General'; # This should reflect the config file format you've chosen
                  # See Catalyst::Plugin::ConfigLoader for supported formats
 test_requires 'Test::More' => '0.88';
