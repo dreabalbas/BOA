@@ -15,7 +15,7 @@
   <tr>
     <th style="border-bottom:1px solid black; width:150px">Autor</th>
     <th style="border-bottom:1px solid black;">Boa</th>
-    <th style="border-bottom:1px solid black; font-size:x-small; width:90px">Fecha</th>
+    <th style="border-bottom:1px solid black; font-size:x-small; width:100px">Fecha</th>
   </tr>
   [% # Muestra todos los usuarios %]
   [% FOREACH boa IN boas -%]
@@ -24,6 +24,9 @@
       <td>[% boa.contenido %]</td>
       <td style="font-size:x-small">
         [% boa.fecha.day %]/[% boa.fecha.month %]/[% boa.fecha.year %] [% boa.fecha.hour %]:[% boa.fecha.min %]:[% boa.fecha.sec %]
+      </td>
+      <td class="boton">
+          <a href="[% c.uri_for(c.controller.action_for('delete'), [boa.autor.nombreusuario, boa.contenido]) %]">Eliminar</a>
       </td>
     </tr>
   [% END -%]

@@ -8,6 +8,6 @@
 
 </p>
 
-<p>
-  <a href="[% c.uri_for('/boas/list') %]">Ver todas las boas</a>
-</p>
+<div class="boton" style="width:150px">
+  <a href="[% c.uri_for('/boas/list') %]">Ver todas las Boas</a>
+</div>

@@ -92,36 +92,6 @@ __PACKAGE__->set_primary_key("nombreusuario");
 
 =head1 RELATIONS
 
-=head2 amigo_usuario1s
-
-Type: has_many
-
-Related object: L<BOA::Schema::Result::Amigo>
-
-=cut
-
-__PACKAGE__->has_many(
-  "amigo_usuario1s",
-  "BOA::Schema::Result::Amigo",
-  { "foreign.usuario1" => "self.nombreusuario" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-=head2 amigo_usuario2s
-
-Type: has_many
-
-Related object: L<BOA::Schema::Result::Amigo>
-
-=cut
-
-__PACKAGE__->has_many(
-  "amigo_usuario2s",
-  "BOA::Schema::Result::Amigo",
-  { "foreign.usuario2" => "self.nombreusuario" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 boas
 
 Type: has_many
@@ -137,29 +107,9 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 usuario1s
 
-Type: many_to_many
-
-Composing rels: L</amigo_usuario2s> -> usuario1
-
-=cut
-
-__PACKAGE__->many_to_many("usuario1s", "amigo_usuario2s", "usuario1");
-
-=head2 usuario2s
-
-Type: many_to_many
-
-Composing rels: L</amigo_usuario2s> -> usuario2
-
-=cut
-
-__PACKAGE__->many_to_many("usuario2s", "amigo_usuario2s", "usuario2");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-07-18 20:48:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZmItTQUT9rZowyWXQ+BYOQ
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-07-19 12:44:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FYklK3ktyM8C2fxFHKOJXQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -24,27 +24,27 @@ Catalyst Controller.
 sub index :Path :Args(0) {
   my ($self, $c) = @_;
 
-  # Get the username and password from form
+  # Obtiene el usuario y la contrasena
   my $nombreusuario = $c->request->params->{nombreusuario};
-  my $contrasena = $c->request->params->{contrasena};
+  my $contrasena    = $c->request->params->{contrasena};
 
-  # If the username and password values were found in form
+  # Si los encontro
   if ($nombreusuario && $contrasena) {
-      # Attempt to log the user in
+      # Intenta hacer login
       if ($c->authenticate({ nombreusuario => $nombreusuario,
-			      contrasena => $contrasena  } )) {
-	  # If successful, then let them use the application
-	  $c->response->redirect($c->uri_for(
+			      contrasena => $contrasena})) {
+    	  # Si lo logra, entra en la app
+    	  $c->response->redirect($c->uri_for(
 	      $c->controller('Usuarios')->action_for('list')));
-	  return;
+	      return;
       } else {
-	  # Set an error message
-	  $c->stash(error_msg => "Nombre de usuario o contraseña incorrecto.");
+	      # Mensaje de error
+	      $c->stash(error_msg => "Nombre de usuario o contraseña incorrecto.");
       }
   } else {
-      # Set an error message
+      # Mensaje de error
       $c->stash(error_msg => "Nombre de usuario o contraseña vacío.")
-	  unless ($c->user_exists);
+	    unless ($c->user_exists);
   }
 
   # If either of above don't work out, send to the login page

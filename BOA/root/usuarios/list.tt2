@@ -8,6 +8,9 @@
 [% # output (use View Source in browser to see the effect) -%]
 
 [% # Some basic HTML with a loop to display books -%]
+<div class="boton">
+  <a href="[% c.uri_for(c.controller.action_for('form_create')) %]">Registrarse</a>
+</div>
 <table style="border:3px solid black;width:800px;text-align:center;margin-left:100px">
   <tr>
     <th style="border-bottom:1px solid black;">Username</th>
@@ -20,7 +23,9 @@
       <td>[% usuario.nombreusuario %]</td>
       <td>[% usuario.nombres %]</td>
       <td>[% usuario.apellidos %]</td>
-      <td><a href="[% c.uri_for(c.controller.action_for('delete'), [usuario.nombreusuario]) %]">Eliminar Usuario</a></td>
+      <td class="boton">
+          <a href="[% c.uri_for(c.controller.action_for('delete'), [usuario.nombreusuario]) %]">Eliminar</a>
+      </td>
     </tr>
 [% END -%]
 </table>

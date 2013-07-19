@@ -10,8 +10,7 @@ __PACKAGE__->config(
         dsn => 'dbi:SQLite:boa.db',
         user => '',
         password => '',
-        on_connect_do => q{PRAGMA foreign_keys = ON
-},
+        on_connect_do => q{PRAGMA foreign_keys = ON},
     }
 );
 
@@ -33,7 +32,7 @@ Catalyst::Helper::Model::DBIC::Schema - 0.61
 
 =head1 AUTHOR
 
-Oriana Gómez
+betocols
 
 =head1 LICENSE
 

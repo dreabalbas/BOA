@@ -41,10 +41,10 @@
                 <span class="error">[% error_msg %]</span>
                 [%# Aqui es donde se coloca todo el contenido de la pagina -%]
                 [% content %]
-            </div><!-- end content -->
-        </div><!-- end bodyblock -->
+            </div><!-- final content -->
+        </div><!-- final bodyblock -->
 
         <div id="footer">Copyright (c) Andrea Balbás, Alberto Cols y Oriana Gómez</div>
-        </div><!-- end footer -->
+        </div><!-- final footer -->
     </body>
 </html>

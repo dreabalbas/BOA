@@ -1,0 +1,47 @@
+[% META title = 'Registrate' -%]
+
+<form method="post" action="[% c.uri_for('form_create_do') %]">
+  <table>
+    <tr>
+      <td>
+        Username
+      </td>
+      <td>
+        <input type="text" name="nombreusuario">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Nombre(s)
+      </td>
+      <td>
+        <input type="text" name="nombres">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Apellido(s)
+      </td>
+      <td>
+        <input type="text" name="apellidos">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Email:
+      </td>
+      <td>
+        <input type="text-field" name="email">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password:
+      </td>
+      <td>
+        <input type="password" name="contrasena">
+      </td>
+    </tr>
+  </table>
+  <input type="submit" name="Submit" value="Submit">
+</form>

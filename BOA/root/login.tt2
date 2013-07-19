@@ -13,22 +13,13 @@
     </tr>
     <tr>
       <td colspan="2"><input type="submit" name="submit" value="Iniciar sesión" /></td>
-      <td> 
-        <div class="boton">
-          <a href="[% c.uri_for(c.controller.action_for('create')) %]">Registrarse</a>
-        </div> 
-      </td>
     </tr>
   </table>
 </form>
 
 <p>
-[%
-    # This code illustrates how certain parts of the TT
-    # template will only be shown to users who have logged in
-%]
 [% IF c.user_exists %]
-    Has iniciado sesión como '[% c.user.username %]'.
+    Has iniciado sesión como '[% c.usuario.nombreusuario %]'.
     <a href="[% c.uri_for('/logout') %]">Cerrar Sesión</a>
 [% ELSE %]
     Debes haber iniciado sesión para usar la aplicación

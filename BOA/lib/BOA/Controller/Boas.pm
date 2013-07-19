@@ -57,12 +57,6 @@ sub list :Local {
     $c->stash(template => 'boas/list.tt2');
 }
 
-=head2 base
-
-Can place common logic to start chained dispatch here
-
-=cut
-
 sub base :Chained('/') :PathPart('boas') :CaptureArgs(0) {
     my ($self, $c) = @_;
 
@@ -78,25 +72,17 @@ Crea una boa via url
 =cut
 
 sub url_create :Chained('base') :PathPart('url_create') :Args(3) {
-    # In addition to self & context, get the autor, contenido, &
-    # fecha args from the URL.  Note that Catalyst automatically
-    # puts extra information after the "/<controller_name>/<action_name/"
-    # into @_.  The args are separated  by the '/' char on the URL.
     my ($self, $c, $autor, $contenido, $fecha) = @_;
 
-    # Call create() on the book model object. Pass the table
-    # columns/field values we want to set as hash values
     my $boa = $c->model('DB::Boa')->create({
         autor  => $autor,
         contenido => $contenido,
         fecha => $fecha, 
     });
 
-    # Assign the Book object to the stash for display and set template
     $c->stash(boa     => $boa,
               template => 'boas/boa_creada.tt2');
 
-    # Disable caching for this page
     $c->response->header('Cache-Control' => 'no-cache');
 }
 
@@ -109,31 +95,60 @@ Muestra form para crear boa
 sub form_create :Chained('base') :PathPart('form_create') :Args(0) {
     my ($self, $c) = @_;
 
-    # Set the TT template to use
     $c->stash(template => 'boas/form_create.tt2');
 }
 
 =head2 form_create_do
 
-Take information from form and add to database
+Obtiene la informacion del form y la agrega a la base de datos
 
 =cut
 
 sub form_create_do :Chained('base') :PathPart('form_create_do') :Args(0) {
     my ($self, $c) = @_;
 
-    # Retrieve the values from the form
     my $autor     = $c->request->params->{autor}     || 'N/A';
     my $contenido = $c->request->params->{contenido} || 'N/A';
 
-    # Crear la boa
     my $boa = $c->model('DB::Boa')->create({
             autor      => $autor,
             contenido  => $contenido,
             fecha      => $c->datetime()
         });
 
-    # Store new model object in stash and set template
     $c->stash(boa     => $boa,
               template => 'boas/boa_creada.tt2');
+}
+
+=head2 object
+ 
+Fetch the specified book object based on the book ID and store
+it in the stash
+ 
+=cut
+ 
+sub object :Chained('base') :PathPart('autor/contenido') :CaptureArgs(2) {
+    my ($self, $c, $autor, $contenido) = @_;
+ 
+    $c->stash(object => $c->stash->{resultset}->find($autor, $contenido));
+ 
+    die "Boa $autor , $contenido no encontrada" if !$c->stash->{object};
+ 
+    $c->log->debug("*** INSIDE OBJECT METHOD for obj autor=$autor contenido=$contenido ***");
+}
+
+=head2 delete
+ 
+Borrar una boa
+ 
+=cut
+ 
+sub delete :Chained('object') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+ 
+    $c->stash->{object}->delete;
+ 
+    $c->stash->{status_msg} = "Boa eliminada";
+ 
+    $c->forward('list');
 }
