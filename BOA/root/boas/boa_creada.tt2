@@ -1,24 +1,13 @@
-[% # Use the TT Dumper plugin to Data::Dumper variables to the browser   -%]
-[% # Not a good idea for production use, though. :-)  'Indent=1' is      -%]
-[% # optional, but prevents "massive indenting" of deeply nested objects -%]
-[% USE Dumper(Indent=1) -%]
- 
-[% # Set the page title.  META can 'go back' and set values in templates -%]
-[% # that have been processed 'before' this template (here it's updating -%]
-[% # the title in the root/src/wrapper.tt2 wrapper template).  Note that -%]
-[% # META only works on simple/static strings (i.e. there is no variable -%]
-[% # interpolation -- if you need dynamic/interpolated content in your   -%]
-[% # title, set 'Boa publicada exitosamente' %]
- 
-[% # Output information about the record that was added.  First title.   -%]
-<p>Boa '[% boa.contenido %]'
- 
-[% # Then, output the last name of the first author -%]
-Publicado por '[% boa.autor.nombreusuario %]'
- 
-[% # Then, output the rating for the book that was added -%]
-El dia [% boa.fecha %].</p>
- 
-[% # Provide a link back to the list page.  'c.uri_for' builds -%]
-[% # a full URI; e.g., 'http://localhost:3000/books/list'      -%]
-<p><a href="[% c.uri_for('/boas/list') %]">Ver todas las boas</a></p>
+<p>
+
+  Boa '[% boa.contenido %]'
+   
+  Publicado por '[% boa.autor.nombreusuario %]'
+   
+  El dia [% boa.fecha %].
+
+</p>
+
+<p>
+  <a href="[% c.uri_for('/boas/list') %]">Ver todas las boas</a>
+</p>

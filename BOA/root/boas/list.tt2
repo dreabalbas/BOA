@@ -1,0 +1,27 @@
+[% # This is a TT comment. -%]
+
+[%- # Provide a title -%]
+[% META title = 'Lista de Boas' -%]
+
+[% # Note That the '-' at the beginning or end of TT code  -%]
+[% # "chomps" the whitespace/newline at that end of the    -%]
+[% # output (use View Source in browser to see the effect) -%]
+
+[% # Some basic HTML with a loop to display books -%]
+<table style="border:3px solid black;width:800px;text-align:center;margin-left:100px">
+  <tr>
+    <th style="border-bottom:1px solid black; width:150px">Autor</th>
+    <th style="border-bottom:1px solid black;">Boa</th>
+    <th style="border-bottom:1px solid black; font-size:x-small; width:90px">Fecha</th>
+  </tr>
+  [% # Muestra todos los usuarios %]
+  [% FOREACH boa IN boas -%]
+    <tr>
+      <td>[% boa.autor.nombreusuario %]</td>
+      <td>[% boa.contenido %]</td>
+      <td style="font-size:x-small">
+        [% boa.fecha.day %]/[% boa.fecha.month %]/[% boa.fecha.year %] [% boa.fecha.hour %]:[% boa.fecha.min %]:[% boa.fecha.sec %]
+      </td>
+    </tr>
+  [% END -%]
+</table>

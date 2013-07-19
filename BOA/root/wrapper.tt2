@@ -10,7 +10,7 @@
     <body>
         <div id="outer">
         <div id="header">
-            <h1> BOA </h1>
+            <h1 style="font-style:italic;color:#444"> BOA </h1>
             <div style="margin-right:600px"> 
                 <img src="[% c.uri_for('/static/images/boa.png') %]" width="50"/> 
             </div>
@@ -18,10 +18,19 @@
 
         <div id="bodyblock">
             <div id="menu">
-                <li><a href="[% c.uri_for('/login') %]">Iniciar sesion</a></li>
+                <li>
+                    <a href="[% c.uri_for('/login') %]">Iniciar sesion</a>
+                </li>
                 <ul>
-            	<li><a href="[% c.uri_for('/hello') %]" title="BOA Welcome Page">Home</a></li>
-            	<li><a href="[% c.uri_for('/usuarios/list') %]">Lista de usuarios</a></li>
+            	<li style="margin-top:5px">
+                    <a href="[% c.uri_for('/hello') %]" title="BOA Welcome Page">Home</a>
+                </li>
+                <li style="margin-top:5px">
+                    <a href="[% c.uri_for('/usuarios/list') %]">Usuarios</a>
+                </li>
+            	<li style="margin-top:5px">
+                    <a href="[% c.uri_for('/boas/list') %]">Boas</a>
+                </li>
                 </ul>
             </div>
 

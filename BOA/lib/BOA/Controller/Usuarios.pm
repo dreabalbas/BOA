@@ -47,7 +47,6 @@ __PACKAGE__->meta->make_immutable;
 =head2 list
 
 Recupera los usuarios y los pasa en usuarios/list.tt2 para ser mostrados
-Fetch all book objects and pass to books/list.tt2 in stash to be displayed
 
 =cut
 
@@ -111,7 +110,7 @@ sub url_create :Chained('base') :PathPart('url_create') :Args(4) {
 	
     # Assign the Book object to the stash for display and set template
     $c->stash(usuario     => $usuario,
-	      template => 'usuarios/usuario_creado.tt2');
+	          template => 'usuarios/usuario_creado.tt2');
 
     # Disable caching for this page
     $c->response->header('Cache-Control' => 'no-cache');

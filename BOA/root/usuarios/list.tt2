@@ -8,14 +8,18 @@
 [% # output (use View Source in browser to see the effect) -%]
 
 [% # Some basic HTML with a loop to display books -%]
-<table>
-<tr><th>Username</th><th>Nombre(s)</th><th>Apellido(s)</th></tr>
-[% # Muestra todos los usuarios %]
-[% FOREACH usuario IN usuarios -%]
+<table style="border:3px solid black;width:800px;text-align:center;margin-left:100px">
   <tr>
-    <td>[% usuario.nombreusuario %]</td>
-    <td>[% usuario.nombres %]</td>
-    <td>[% usuario.apellidos %]</td>
+    <th style="border-bottom:1px solid black;">Username</th>
+    <th style="border-bottom:1px solid black;">Nombre(s)</th>
+    <th style="border-bottom:1px solid black;">Apellido(s)</th>
   </tr>
+  [% # Muestra todos los usuarios %]
+  [% FOREACH usuario IN usuarios -%]
+    <tr>
+      <td>[% usuario.nombreusuario %]</td>
+      <td>[% usuario.nombres %]</td>
+      <td>[% usuario.apellidos %]</td>
+    </tr>
 [% END -%]
 </table>

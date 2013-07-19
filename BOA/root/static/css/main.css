@@ -34,3 +34,13 @@
 .error {
     color: #f00;
 }
+a,a:visited {
+    text-decoration: none;
+    color: black !important;
+    cursor: pointer;
+    background: transparent !important;
+}
+
+a:hover{
+    font-style: italic;
+}
