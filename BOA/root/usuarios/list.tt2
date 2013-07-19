@@ -20,6 +20,7 @@
       <td>[% usuario.nombreusuario %]</td>
       <td>[% usuario.nombres %]</td>
       <td>[% usuario.apellidos %]</td>
+      <td><a href="[% c.uri_for(c.controller.action_for('delete'), [usuario.nombreusuario]) %]">Eliminar Usuario</a></td>
     </tr>
 [% END -%]
 </table>

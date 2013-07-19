@@ -1,4 +1,4 @@
-[% META title = 'Manual Form Book Create' -%]
+[% META title = 'Crear una Boa' -%]
 
 <form method="post" action="[% c.uri_for('form_create_do') %]">
   <table>
@@ -15,15 +15,7 @@
         Contenido:
       </td>
       <td>
-        <input type="text" name="contenido">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Fecha
-      </td>
-      <td>
-        <input type="text" name="fecha">
+        <input type="text-field" name="contenido" size="50" >
       </td>
     </tr>
   </table>

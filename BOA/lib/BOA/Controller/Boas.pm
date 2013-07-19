@@ -125,13 +125,12 @@ sub form_create_do :Chained('base') :PathPart('form_create_do') :Args(0) {
     # Retrieve the values from the form
     my $autor     = $c->request->params->{autor}     || 'N/A';
     my $contenido = $c->request->params->{contenido} || 'N/A';
-    my $fecha     = $c->request->params->{fecha}     || '1';
 
     # Crear la boa
-    my $boa = $c->model('DB::Boas')->create({
+    my $boa = $c->model('DB::Boa')->create({
             autor      => $autor,
             contenido  => $contenido,
-            fecha      => $fecha
+            fecha      => $c->datetime()
         });
 
     # Store new model object in stash and set template

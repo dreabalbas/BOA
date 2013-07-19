@@ -1,0 +1,8 @@
+[% META title = 'Usuario eliminado' %]
+
+[% # Output information about the record that was added.  First title.   -%]
+<p>Se eliminó el usuario '[% usuario.nombreusuario %]'
+
+[% # Provide a link back to the list page.  'c.uri_for' builds -%]
+[% # a full URI; e.g., 'http://localhost:3000/books/list'      -%]
+<p><a href="[% c.uri_for('/usuarios/list') %]">Volver a usuarios</a></p>

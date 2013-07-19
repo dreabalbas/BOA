@@ -28,6 +28,8 @@ use Catalyst qw/
     Session
     Session::Store::File
     Session::State::Cookie
+
+    DateTime
 /;
 
 extends 'Catalyst';
