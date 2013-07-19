@@ -101,9 +101,9 @@ sub auto :Private {
 	# Dump a log message to the development server debug output
 	$c->log->debug('***Root::auto User not found, forwarding to /login');
 	# Redirect the user to the login page
-	$c->response->redirect($c->uri_for('/login'));
+	# $c->response->redirect($c->uri_for('/login'));
 	# Return 0 to cancel 'post-auto' processing and prevent use of application
-	return 0;
+	return 1;
     }
 
     # User found, so return 1 to continue with processing after this 'auto'
