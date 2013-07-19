@@ -22,6 +22,7 @@
       <td style="font-size:x-small">
         [% boa.fecha.day %]/[% boa.fecha.month %]/[% boa.fecha.year %] [% boa.fecha.hour %]:[% boa.fecha.min %]:[% boa.fecha.sec %]
       </td>
+      <td><a href="[% c.uri_for(c.controller.action_for('delete'), [boa.autor.nombreusuario, boa.contenido]) %]">Eliminar Boa</a></td>
     </tr>
   [% END -%]
 </table>

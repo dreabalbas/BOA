@@ -10,8 +10,7 @@ __PACKAGE__->config(
         dsn => 'dbi:SQLite:boa.db',
         user => '',
         password => '',
-        on_connect_do => q{PRAGMA foreign_keys = ON
-},
+        on_connect_do => q{PRAGMA foreign_keys = ON},
     }
 );
 
