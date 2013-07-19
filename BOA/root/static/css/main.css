@@ -44,3 +44,19 @@ a,a:visited {
 a:hover{
     font-style: italic;
 }
+
+.boton {
+    background-color:#eee;
+    width:70px;
+    border:1px solid black;
+    padding:2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size:small;
+    text-align:center;
+    border-radius:3px
+}
+
+.boton:hover{
+    background-color: #eee;
+}
