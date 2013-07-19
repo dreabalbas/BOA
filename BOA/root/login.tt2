@@ -1,4 +1,4 @@
-[% META title = 'Login' %]
+[% META title = 'Inicio de Sesión' %]
 
 <!-- Login form -->
 <form method="post" action="[% c.uri_for('/login') %]">
