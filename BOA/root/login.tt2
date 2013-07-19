@@ -30,3 +30,7 @@
 [% END %]
 
 </p>
+
+<p>
+  <a href="[% c.uri_for(c.controller.action_for('create')) %]">Registrarse</a>
+</p>
