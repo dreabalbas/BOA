@@ -22,11 +22,6 @@ CREATE TABLE boa (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE amigo (
-  usuario1           TEXT REFERENCES usuario(nombreusuario),
-  usuario2           TEXT REFERENCES usuario(nombreusuario),
-  PRIMARY KEY (usuario1, usuario2)
-);
 
 --INSERCIONES POR DEFAULT
 INSERT INTO usuario VALUES ('origds', 'Oriana', 'Gomez', 'origds@gmail.com', 'oriana');
@@ -38,6 +33,3 @@ INSERT INTO boa VALUES (3, 'betocolsf', 'boa 1 de beto', '2011-05-10 21:02:34');
 INSERT INTO boa VALUES (4, 'betocolsf', 'boa 2 de beto', '2011-05-10 21:02:34');
 INSERT INTO boa VALUES (5, 'dreabalbas', 'boa 1 de andre', '2011-05-10 21:02:34');
 INSERT INTO boa VALUES (6, 'dreabalbas', 'boa 2 de andre', '2011-05-10 21:02:34');
-INSERT INTO amigo VALUES ('origds', 'betocolsf');
-INSERT INTO amigo VALUES ('origds', 'dreabalbas');
-INSERT INTO amigo VALUES ('betocolsf', 'dreabalbas');
