@@ -58,6 +58,11 @@ __PACKAGE__->table("usuario");
   data_type: 'text'
   is_nullable: 1
 
+=head2 contrasena
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -68,6 +73,8 @@ __PACKAGE__->add_columns(
   "apellidos",
   { data_type => "text", is_nullable => 1 },
   "email",
+  { data_type => "text", is_nullable => 1 },
+  "contrasena",
   { data_type => "text", is_nullable => 1 },
 );
 
@@ -151,8 +158,8 @@ Composing rels: L</amigo_usuario2s> -> usuario2
 __PACKAGE__->many_to_many("usuario2s", "amigo_usuario2s", "usuario2");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-07-15 15:43:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8pf8vGx37GPNldYwBAtSsA
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-07-18 20:48:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZmItTQUT9rZowyWXQ+BYOQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

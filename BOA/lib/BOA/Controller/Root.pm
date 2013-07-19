@@ -75,7 +75,7 @@ sub hello :Global {
 }
 
 =head2 auto
-    
+
 Check if there is a user and, if not, forward to login page
 
 =cut
@@ -92,7 +92,7 @@ sub auto :Private {
     #   if ($c->action eq $c->controller('Login')->action_for('index'))
     # to only allow unauthenticated access to the 'index' action we
     # added above.
-    if ($c->action eq $c->controller('Usuarios')->action_for('login') {
+    if ($c->controller eq $c->controller('Login')) {
 	return 1;
     }
 
@@ -101,7 +101,7 @@ sub auto :Private {
 	# Dump a log message to the development server debug output
 	$c->log->debug('***Root::auto User not found, forwarding to /login');
 	# Redirect the user to the login page
-	$c->response->redirect($c->uri_for('/usuarios/login'));
+	$c->response->redirect($c->uri_for('/login'));
 	# Return 0 to cancel 'post-auto' processing and prevent use of application
 	return 0;
     }
@@ -109,4 +109,3 @@ sub auto :Private {
     # User found, so return 1 to continue with processing after this 'auto'
     return 1;
 }
-

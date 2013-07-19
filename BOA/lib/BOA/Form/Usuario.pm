@@ -11,6 +11,7 @@ has_field 'nombreusuario' => ( type => 'Text', required => 1, maxlength => 20,
 has_field 'nombres' => ( type => 'Text', required => 1, maxlength => 60 );
 has_field 'apellidos' => ( type => 'Text', required => 1, maxlength => 60);
 has_field 'email' => ( type => 'Email', required => 1);
+has_field 'contrasena' => ( type => 'Text', required => 1, maxlength => 20);
 has_field 'submit' => ( type => 'Submit', value => 'Guardar' );
 
 __PACKAGE__->meta->make_immutable;
