@@ -5,11 +5,11 @@
   <table>
     <tr>
       <td>Nombre de usuario:</td>
-      <td><input type="text" name="nombreusuario" size="40" /></td>
+      <td><input type="text" name="nombreusuario" size="20" /></td>
     </tr>
     <tr>
-      <td>Password:</td>
-      <td><input type="password" name="contrasena" size="40" /></td>
+      <td>Contraseña:</td>
+      <td><input type="password" name="contrasena" size="20" /></td>
     </tr>
     <tr>
       <td colspan="2"><input type="submit" name="submit" value="Iniciar sesión" /></td>

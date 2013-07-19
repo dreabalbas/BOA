@@ -39,11 +39,11 @@ sub index :Path :Args(0) {
 	  return;
       } else {
 	  # Set an error message
-	  $c->stash(error_msg => "Nombre de usuario o contrasena incorrecto.");
+	  $c->stash(error_msg => "Nombre de usuario o contraseña incorrecto.");
       }
   } else {
       # Set an error message
-      $c->stash(error_msg => "Nombre de usuario o contrasena vacio.")
+      $c->stash(error_msg => "Nombre de usuario o contraseña vacío.")
 	  unless ($c->user_exists);
   }
 
