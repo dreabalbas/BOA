@@ -2,40 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" [%#
     %]"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<title>[% template.title or "BOA" %]</title>
-<link rel="stylesheet" href="[% c.uri_for('/static/css/main.css') %]" />
-</head>
+    <head>
+        <title>[% template.title or "BOA" %]</title>
+        <link rel="stylesheet" href="[% c.uri_for('/static/css/main.css') %]" />
+    </head>
 
-<body>
-<div id="outer">
-<div id="header">
-    [%# COLOCAR EL LOGO AQUI -%]
-    <img src="[% c.uri_for('/static/images/btn_88x31_powered.png') %]" />
-    [%# TITULO DE LA PAGINA-%]
-    <h1>[% template.title or site.title %]</h1>
-</div>
+    <body>
+        <div id="outer">
+        <div id="header">
+            <h1> BOA </h1>
+            <div style="margin-right:600px"> 
+                <img src="[% c.uri_for('/static/images/boa.png') %]" width="50"/> 
+            </div>
+        </div>
 
-<div id="bodyblock">
-<div id="menu">
-    Navigation:
-    <ul>
-	<li><a href="[% c.uri_for('/') %]" title="BOA Welcome Page">Home</a></li>
-	<li><a href="[% c.uri_for('/usuarios/list') %]">Lista de usuarios</a></li>
-    </ul>
-</div>
+        <div id="bodyblock">
+            <div id="menu">
+                <li><a href="[% c.uri_for('/login') %]">Iniciar sesion</a></li>
+                <ul>
+            	<li><a href="[% c.uri_for('/hello') %]" title="BOA Welcome Page">Home</a></li>
+            	<li><a href="[% c.uri_for('/usuarios/list') %]">Lista de usuarios</a></li>
+                </ul>
+            </div>
 
-<div id="content">
-    [%# Status and error messages %]
-    <span class="message">[% status_msg %]</span>
-    <span class="error">[% error_msg %]</span>
-    [%# Aqui es donde se coloca todo el contenido de la pagina -%]
-    [% content %]
-</div><!-- end content -->
-</div><!-- end bodyblock -->
+            <div id="content">
+                <h2>[% template.title or site.title %]</h2>
+                [%# Status and error messages %]
+                <span class="message">[% status_msg %]</span>
+                <span class="error">[% error_msg %]</span>
+                [%# Aqui es donde se coloca todo el contenido de la pagina -%]
+                [% content %]
+            </div><!-- end content -->
+        </div><!-- end bodyblock -->
 
-<div id="footer">Copyright (c) Andrea Balbás, Alberto Cols y Oriana Gómez</div>
-</div><!-- end footer -->
-
-</body>
+        <div id="footer">Copyright (c) Andrea Balbás, Alberto Cols y Oriana Gómez</div>
+        </div><!-- end footer -->
+    </body>
 </html>
