@@ -12,7 +12,7 @@
       <td><input type="password" name="contrasena" size="40" /></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="submit" value="Iniciar sesion" /></td>
+      <td colspan="2"><input type="submit" name="submit" value="Iniciar sesión" /></td>
     </tr>
   </table>
 </form>
@@ -23,10 +23,10 @@
     # template will only be shown to users who have logged in
 %]
 [% IF c.user_exists %]
-    Please Note: You are already logged in as '[% c.user.username %]'.
-    You can <a href="[% c.uri_for('/logout') %]">logout</a> here.
+    Has iniciado sesión como '[% c.user.username %]'.
+    <a href="[% c.uri_for('/logout') %]">Cerrar Sesión</a>
 [% ELSE %]
-    You need to log in to use this application.
+    Debes haber iniciado sesión para usar la aplicación
 [% END %]
 
 </p>
